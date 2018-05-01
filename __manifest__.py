@@ -5,4 +5,5 @@
 	'depends': ['base','mail','hr'],
 	'data': [
 	],
+	'application': True,
 }
