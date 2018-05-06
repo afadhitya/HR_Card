@@ -5,6 +5,7 @@
 	'depends': ['base','mail','hr'],
 	'data': [
 		'views/card_menu.xml',
+		'views/card_view.xml'
 
 	],
 	'application': False,

@@ -1,5 +1,8 @@
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
+from datetime import datetime
+from datetime import timedelta
+import logging	
 
 class IdCard(models.Model):
 	_name = 'id.card'

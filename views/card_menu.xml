@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <odoo>
-	<!-- Action to open vote_app list -->
-	
-
+	<!-- Action to open card_module list -->
 	<act_window id="action_id_card"
 		name="Carding"
 		res_model="id.card"
@@ -12,7 +10,11 @@
 		name="Carding Bussiness"
 		res_model="business.card"
 		view_mode="tree,form"/>
-	
+
+	<act_window id="action_card"
+		name="Carding Print"
+		res_model="print.card"
+		view_mode="tree,form"/>
 	
 	
 	<!-- Top Menu -->
@@ -41,6 +43,16 @@
 		name="Create Bussines Card"
 		parent="side_menu_bussiness_card"
 		action="action_bussiness_card"
+		/>
+
+	<menuitem id="side_menu_print_card"
+		name="Print Card"
+		parent="menu_id_app"
 		
+		/>	
+	<menuitem id="side_menu_printcard"
+		name="Create Print Card"
+		parent="side_menu_print_card"
+		action="action_card"
 		/>
 </odoo>
