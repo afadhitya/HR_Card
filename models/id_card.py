@@ -3,7 +3,7 @@ from odoo.exceptions import ValidationError
 
 class IdCard(models.Model):
 	_name = 'id.card'
-	_description = ''
+	_description = 'Model for Idcard'
 
 
 	company_name = fields.Char(string='the name of company')

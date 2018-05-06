@@ -3,14 +3,17 @@ from odoo.exceptions import ValidationError
 
 class BusinessCard(models.Model):
 	_name = 'business.card'
-	_description = 'Get to know us with cards'
+	_description = 'Model for Business Card'
 
-	company_name = fields.Char(string='the name of company your work')
-	employee_name = fields.Char(help="what needs to be done?")
-	logo 	= fields.Binary("Small-sized photo", attachment=True,
-              help="Small-sized photo of the employee. It is automatically "
-             "resized as a 64x64px image, with aspect ratio preserved. "
-             "Use this field anywhere a small image is required.")
-	address = fields.Char(string='to know your life')
-	contact = fields.Char(string='contact owner')
-	email	= fields.Char(string='to contact in email')
+	#Employee Information
+	company_name = fields.Char(string='Company')
+	employee_name = fields.Char(string='Employee')
+	job_title = fields.Char(string='Job Title')
+	
+	#Card Information
+	card_Type = fields.selection((('1','Business Card'),('2','Id Card')),string='Card Type')
+	card_Id = fields.Integer(string='Card No')
+	request_Date= fields.Date(string='Request Date', default=datetime.now())
+	reason = fields.Char(string='Reason')
+	status	= fields.Char(string='Status')
+	active_Periode = fields.Date(string='Active Periode') 
