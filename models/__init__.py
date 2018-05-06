@@ -1,2 +1,2 @@
-import business_card
-import id_card
+from . import business_card
+from . import id_card
