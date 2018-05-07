@@ -1,58 +1,16 @@
 <?xml version="1.0"?>
 <odoo>
-	<!-- Action to open card_module list -->
-	<act_window id="action_id_card"
-		name="Carding"
-		res_model="id.card"
-		view_mode="tree,form"/>
-	
-	<act_window id="action_bussiness_card"
-		name="Carding Bussiness"
-		res_model="business.card"
-		view_mode="tree,form"/>
+	<data>
+		<record id="action_employee_card" model="ir.actions.act_window">
+        	<field name="name">Employee Card</field>
+        	<field name="res_model">print.card</field>
+        	<field name="view_type">form</field>
+        	<field name="view_mode">tree,form</field>
+    	</record>
 
-	<act_window id="action_card"
-		name="Carding Print"
-		res_model="print.card"
-		view_mode="tree,form"/>
-	
-	
-	<!-- Top Menu -->
-	<menuitem id="menu_id_app"
-		name="Carding"
-		action="action_id_card" 
-		/>
-	<!-- Menu item to open vote app list / Side Menu-->	
-	<menuitem id="side_menu_id_card" 
-		name="Id Card"
-		parent="menu_id_app"
-		/>
-	<menuitem id="side_menu_idcard"
-		name="Create Id Card"
-		action="action_id_card"
-		parent="side_menu_id_card"
-		/>
-
-
-	<menuitem id="side_menu_bussiness_card"
-		name="Bussines Card"
-		parent="menu_id_app"
-		
-		/>	
-	<menuitem id="side_menu_bussinesscard"
-		name="Create Bussines Card"
-		parent="side_menu_bussiness_card"
-		action="action_bussiness_card"
-		/>
-
-	<menuitem id="side_menu_print_card"
-		name="Print Card"
-		parent="menu_id_app"
-		
-		/>	
-	<menuitem id="side_menu_printcard"
-		name="Create Print Card"
-		parent="side_menu_print_card"
-		action="action_card"
-		/>
+    	<menuitem
+            action="action_employee_card"
+            id="menu_employee_card"
+            parent="hr.menu_hr_root"/>
+	</data>
 </odoo>
