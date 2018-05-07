@@ -6,14 +6,14 @@
 			<form>
 				<header>
 				<!-- Button go here -->
-					<button name="do_send_approval" type="object" string="Send Cad Approval" class="btn-primary" states="new" />
-					
+					<button name="do_send_approval" type="object" string="Send Card Approval" class="btn-primary" states="new" />
+
 					<button name="do_approve" type="object" string="Approve" class="btn-primary" states="waiting"/>
-					
+
 					<button name="do_reject" type="object" string="Reject" class="btn-primary" states="waiting"/>
-					
+
 					<button name="do_closed" type="object" string="Close" class="btn-primary" states="approved"/>
-					
+
 					<field name="state" widget="statusbar" statusbar_visible="new,waiting,approved,closed" on_change="1" modifiers="{'readonly': true}"/>
 
 				</header>
@@ -39,7 +39,7 @@
 										<field name="status"/>
 										<field name="active_Periode" attrs="{'invisible':[('status','!=','temporary')]}"/>
 									</group>
-								</group>				
+								</group>
 							</group>
 						<group name="group_bottom">
 							<notebook>
@@ -47,7 +47,7 @@
 									<field name="description"/>
 								</page>
 							</notebook>
-						</group>						
+						</group>
 					</sheet>
 				</form>
 		</field>
