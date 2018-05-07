@@ -22,16 +22,17 @@
 
 						</div>
 							<group name="group_top">
-								<group name="group_left">
+								<group>
 									<group string="Employee Information">
 										<field name="image" widget="image"/>
 										<field name="employee_ids"/>
 										<field name="department_id"/>
 										<field name="job_title"/>
+										<field name="address_home_id" context="{'show_address': 1}" options="{'always_reload': True, 'highlight_first_line': True}" can_create="true" can_write="true" modifiers="{}"/>
 									</group>
 								</group>
-								<group name="group_right">
-									<group string="Card Information">
+								<group>
+									<group string="Card Information" colspan="4">
 										<field name="card_Type"/>
 										<field name="card_Id"/>
 										<field name="request_Date"/>
