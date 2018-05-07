@@ -35,7 +35,7 @@ class BusinessCard(models.Model):
 	job_title = fields.Many2one('hr.job', string='Job Title', default=lambda self: self.env.user, readonly=True)
 	
 
-	image = fields.Binary("Photo", default=_default_image, attachment=True, help="This field holds the image used as photo for the employee, limited to 1024x1024px.")
+	image = fields.Binary(string="Photo", default=_default_image, attachment=True, help="This field holds the image used as photo for the employee, limited to 1024x1024px.")
 	image_medium = fields.Binary("Medium-sized photo", attachment=True,
         help="Medium-sized photo of the employee. It is automatically "
              "resized as a 128x128px image, with aspect ratio preserved. "

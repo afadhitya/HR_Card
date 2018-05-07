@@ -4,7 +4,6 @@
 		<field name="model">print.card</field>
 		<field name="arch" type="xml">
 			<form>
-
 				<header>
 				<!-- Button go here -->
 					<button name="do_send_approval" type="object" string="Send Cad Approval" class="btn-primary" states="new" />
@@ -20,38 +19,36 @@
 				</header>
 					<sheet>
 						<div class="oe_title">
+
+						</div>
 							<group name="group_top">
 								<group name="group_left">
-									<label for="EmployeeInformation" string="Employee Information"/>
+									<group string="Employee Information">
+										<field name="image" widget="image"/>
+										<field name="employee_ids"/>
+										<field name="department_id"/>
+										<field name="job_title"/>
+									</group>
 								</group>
-								 
+								<group name="group_right">
+									<group string="Card Information">
+										<field name="card_Type"/>
+										<field name="card_Id"/>
+										<field name="request_Date"/>
+										<field name="status"/>
+										<field name="active_Periode" attrs="{'invisible':[('status','!=','temporary')]}"/>
+									</group>
+								</group>				
 							</group>
-						</div>
-
 						<group name="group_bottom">
-							<group name="group_left">
-								<field name="employee_ids"/>
-								<field name="department_id"/>
-								<field name="job_title"/>
-							</group>
-							<group name="group_right">
-								<field name="card_Type"/>
-								<field name="card_Id"/>
-								<field name="request_Date"/>
-								<field name="status"/>
-								<field name="active_Periode" attrs="{'invisible':[('status','!=','temporary')]}"/>
-								</group>
-
-						</group>
-
-						<notebook>
-							<page string="Reason">
-								<field name="description"/>
-							</page>
-						
-						</notebook>
+							<notebook>
+								<page string="Reason">
+									<field name="description"/>
+								</page>
+							</notebook>
+						</group>						
 					</sheet>
-			</form>
+				</form>
 		</field>
 	</record>
 </odoo>
