@@ -28,7 +28,15 @@ class BusinessCard(models.Model):
 	card_Type = fields.Selection((('business_card','Business Card'),('id_card','Id Card')),string='Card Type')
 	card_Id = fields.Integer(string='Card No')
 	request_Date= fields.Date(string='Request Date', default=datetime.now())
-	reason = fields.Char(string='Reason')
+	description = fields.Text('Notes',required=True)
 	status	= fields.Selection((('permanent','Permanent'),('temporary','Temporary')),string='Status')
 	active_Periode = fields.Date(string='Active Periode')
+
+	state = fields.Selection([
+        ('new', 'New'),
+        ('waiting', 'Waiting for Approval'),
+        ('approved', 'Approved'),
+        ('closed', 'Closed'),
+        ('reject', 'Reject'),
+        ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', default='new')
 
