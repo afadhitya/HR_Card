@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="report_card_template">
+    <t t-call="report.html_container">
+      <t t-call="report.external_layout">
+        <div class="page">
+          <t t-foreach="docs" t-as="o">
+          <div class="row mt32 mb32" id="informations">
+            <div t-if="o.employee_ids" class="col-xs-6">
+              <strong>Employee: </strong><p t-field="o.employee_ids"/>
+            </div>
+
+            <div t-if="o.department_id" class="col-xs-6">
+              <strong>Department: </strong><p t-field="o.department_id"/>
+            </div>
+
+            <div t-if="o.job_title" class="col-xs-6">
+              <strong>Job Title: </strong><p t-field="o.job_title"/>
+            </div>
+
+            <div t-if="o.address_home_id" class="col-xs-6">
+              <strong>Address: </strong><p t-field="o.address_home_id"/>
+            </div>
+
+            <div t-if="o.card_Type" class="col-xs-6">
+              <strong>Card Type: </strong><p t-field="o.card_Type"/>
+            </div>
+
+            <div t-if="o.card_Id" class="col-xs-6">
+              <strong>Card Number: </strong><p t-field="o.card_Id"/>
+            </div>
+
+            <div t-if="o.request_Date" class="col-xs-6">
+              <strong>Request Date: </strong><p t-field="o.request_Date"/>
+            </div>
+
+            <div t-if="o.description" class="col-xs-12">
+              <strong>Details: </strong><p t-field="o.description"/>
+            </div>
+
+            <div t-if="o.active_Periode" class="col-xs-6">
+              <strong>Periode: </strong><p t-field="o.active_Periode"/>
+            </div>
+
+
+          </div>
+        </t>
+        </div>
+      </t>
+    </t>
+  </template>
+</odoo>

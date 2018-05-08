@@ -6,7 +6,8 @@
 	'data': [
 		'views/card_menu.xml',
 		'views/card_view.xml',
-		'reports/print_card.xml'
+		'reports/print_card.xml',
+		'reports/report_card_template.xml'
 	],
 	'application': False,
 }
