@@ -1,8 +1,8 @@
 {
-	'name':'ID Card',
-	'description': 'Crete Your Own ID Card',
+	'name': 'Employee Card',
+	'description': 'Crete Your Own Employee Card',
 	'author': 'KELOMPOK B2',
-	'depends': ['base','mail','hr'],
+	'depends': ['base', 'mail', 'hr'],
 	'data': [
 		'views/card_menu.xml',
 		'views/card_view.xml',

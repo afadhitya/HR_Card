@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <odoo>
 	<record id="view_form_print_card" model="ir.ui.view">
 		<field name="name">Print Card Form</field>
@@ -6,50 +7,56 @@
 			<form>
 				<header>
 				<!-- Button go here -->
-					<button name="do_send_approval" type="object" string="Send Card Approval" class="btn-primary" states="new" />
+					<button name="do_send_approval" type="object" string="Send Approval" class="btn-primary" states="draft" />
 
 					<button name="do_approve" type="object" string="Approve" class="btn-primary" states="waiting"/>
 
-					<button name="do_reject" type="object" string="Reject" class="btn-primary" states="waiting"/>
+					<button name="do_refuse" type="object" string="Refuse" class="btn-primary" states="waiting"/>
 
-					<button name="do_closed" type="object" string="Close" class="btn-primary" states="approved"/>
+					<button name="%(action_card_report)d" string="Print Card" type="action" class="btn-primary" states="progress"/>
 
-					<field name="state" widget="statusbar" statusbar_visible="new,waiting,approved,closed" on_change="1" modifiers="{'readonly': true}"/>
+					<button name="do_done" type="object" string="Done" class="btn-primary" states="progress"/>
 
+					<field name="state" widget="statusbar" statusbar_visible="draft,waiting,progress,done" on_change="1" modifiers="{'readonly': true}"/>
 				</header>
-					<sheet>
-						<div class="oe_title">
 
-						</div>
-							<group name="group_top">
-								<group>
-									<group string="Employee Information">
-										<field name="image" widget="image"/>
-										<field name="employee_ids"/>
-										<field name="department_id"/>
-										<field name="job_title"/>
-										<field name="address_home_id"/>
-									</group>
-								</group>
-								<group>
-									<group string="Card Information" colspan="4">
-										<field name="card_Type"/>
-										<field name="card_Id"/>
-										<field name="request_Date"/>
-										<field name="status"/>
-										<field name="active_Periode" attrs="{'invisible':[('status','!=','temporary')]}"/>
-									</group>
-								</group>
+				<sheet>
+					<div class="oe_title">
+					</div>
+					<group name="group_top">
+						<group>
+							<group string="Employee Information">
+								<field name="image" widget="image"/>
+								<field name="employee_ids"/>
+								<field name="department_id"/>
+								<field name="job_title"/>
+								<field name="address_home_id"/>
+								<field name="work_email"/>
+								<field name="work_phone"/>
+								<field name="mobile_phone"/>
+								<field name="gender"/>
+								<field name="birthday"/>
 							</group>
-						<group name="group_bottom">
-							<notebook>
-								<page string="Reason">
-									<field name="description"/>
-								</page>
-							</notebook>
 						</group>
-					</sheet>
-				</form>
+					<group>
+							<group string="Card Information" colspan="4">
+								<field name="card_Type"/>
+								<field name="card_Id"/>
+								<field name="request_Date"/>
+								<field name="status"/>
+								<field name="active_Periode" attrs="{'invisible':[('status','!=','temporary')]}"/>
+							</group>
+						</group>
+					</group>
+					<group name="group_bottom">
+						<notebook>
+							<page string="Reason">
+								<field name="description"/>
+							</page>
+						</notebook>
+					</group>
+				</sheet>
+			</form>
 		</field>
 	</record>
 </odoo>
