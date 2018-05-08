@@ -19,7 +19,9 @@
             </div>
 
             <div t-if="o.address_home_id" class="col-xs-6">
-              <strong>Address: </strong><p t-field="o.address_home_id"/>
+              <strong>Address: </strong><p t-field="o.address_home_id.street"/>
+              <p t-field="o.address_home_id.street2"/>
+              <span t-field="o.address_home_id.city"/> <span t-field="o.address_home_id.state_id"/> <span t-field="o.address_home_id.zip"/>
             </div>
 
             <div t-if="o.card_Type" class="col-xs-6">

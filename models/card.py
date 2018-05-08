@@ -39,6 +39,7 @@ class BusinessCard(models.Model):
 		_logger = logging.getLogger(__name__)
 		_logger.debug('RESOURCE ID: ' + str(employee.name_related))
 		return employee.job_id
+		
 
 	@api.model
 	def _default_image(self):
@@ -57,6 +58,7 @@ class BusinessCard(models.Model):
         help="Medium-sized photo of the employee. It is automatically "
              "resized as a 128x128px image, with aspect ratio preserved. "
              "Use this field in form views or some kanban views.")
+
 	#Card Informationr
 	card_Type = fields.Selection((('business_card','Business Card'),('id_card','Id Card')),string='Card Type', required=True)
 	card_Id = fields.Char(string='Card No')
