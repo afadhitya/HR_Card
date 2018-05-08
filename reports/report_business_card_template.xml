@@ -6,12 +6,17 @@
         <div class="page">
           <t t-foreach="docs" t-as="o">
             <div class="row mt32 mb32" id="informations">
-              <div t-if="o.employee_ids" class="col-xs-6">
-                <strong>Employee: </strong><p t-field="o.employee_ids"/>
+
+              <div t-if="o.company_id" class="col-xs-6">
+                <img t-attf-src="data:image/*;base64,{{o.company_id.logo}}" style="width:100%;height:20%;"/>
               </div>
 
               <div t-if="o.company_id" class="col-xs-6">
-                <strong>Company Email: </strong><p t-field="o.company_id.email"/>
+                <strong>Company Name: </strong><p t-field="o.company_id"/>
+              </div>
+
+              <div t-if="o.employee_ids" class="col-xs-6">
+                <strong>Employee: </strong><p t-field="o.employee_ids"/>
               </div>
 
               <div t-if="o.company_id" class="col-xs-6">
@@ -20,17 +25,18 @@
                 <span t-field="o.company_id.city"/> <span t-field="o.company_id.state_id"/> <span t-field="o.company_id.zip"/>
               </div>
 
-              <div t-if="o.card_Type" class="col-xs-6">
-                <strong>Card Type: </strong><p t-field="o.card_Type"/>
+               <div t-if="o.company_id" class="col-xs-6">
+                <strong>Company Phone: </strong><p t-field="o.company_id.phone"/>
               </div>
 
-              <div t-if="o.request_Date" class="col-xs-6">
-                <strong>Requested Date: </strong><p t-field="o.request_Date"/>
+               <div t-if="o.company_id" class="col-xs-6">
+                <strong>Company Fax: </strong><p t-field="o.company_id.fax"/>
               </div>
 
-              <div t-if="o.description" class="col-xs-12">
-                <strong>Description: </strong><p t-field="o.description"/>
+              <div t-if="o.company_id" class="col-xs-6">
+                <strong>Company Email: </strong><p t-field="o.company_id.email"/>
               </div>
+              
             </div>
           </t>
         </div>

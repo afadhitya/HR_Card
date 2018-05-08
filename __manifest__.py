@@ -2,7 +2,7 @@
 	'name': 'Employee Card',
 	'description': 'Crete Your Own Employee Card',
 	'author': 'KELOMPOK B2',
-	'depends': ['base', 'mail', 'hr'],
+	'depends': ['base', 'mail', 'hr', 'report'],
 	'data': [
 		'views/card_menu.xml',
 		'views/card_view.xml',

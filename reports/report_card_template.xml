@@ -6,6 +6,19 @@
         <div class="page">
           <t t-foreach="docs" t-as="o">
             <div class="row mt32 mb32" id="informations">
+
+              <div t-if="o.company_id" class="col-xs-6">
+                <strong>Company: </strong><p t-field="o.company_id"/>
+              </div>
+
+              <div t-if="o.image" class="col-xs-6">
+                <img t-attf-src="data:image/*;base64,{{o.image}}" style="width:100%;height:20%;"/>
+              </div>
+
+              <div t-if="o.job_title" class="col-xs-6">
+                <strong>Job Title: </strong><p t-field="o.job_title"/>
+              </div>
+
               <div t-if="o.employee_ids" class="col-xs-6">
                 <strong>Employee: </strong><p t-field="o.employee_ids"/>
               </div>
@@ -14,8 +27,12 @@
                 <strong>Department: </strong><p t-field="o.department_id"/>
               </div>
 
-              <div t-if="o.job_title" class="col-xs-6">
-                <strong>Job Title: </strong><p t-field="o.job_title"/>
+              <div t-if="o.gender" class="col-xs-6">
+                <strong>Gender: </strong><p t-field="o.gender"/>
+              </div>
+
+              <div t-if="o.birthday" class="col-xs-6">
+                <strong>Birthday: </strong><p t-field="o.birthday"/>
               </div>
 
               <div t-if="o.address_home_id" class="col-xs-6">
@@ -24,25 +41,27 @@
                 <span t-field="o.address_home_id.city"/><span t-field="o.address_home_id.state_id"/><span t-field="o.address_home_id.zip"/>
               </div>
 
-              <div t-if="o.card_Type" class="col-xs-6">
-                <strong>Card Type: </strong><p t-field="o.card_Type"/>
+              <div t-if="o.work_phone" class="col-xs-6">
+                <strong>Work Phone: </strong><p t-field="o.work_phone"/>
               </div>
 
-              <div t-if="o.card_Id" class="col-xs-6">
-                <strong>Card Number: </strong><p t-field="o.card_Id"/>
+              <div t-if="o.mobile_phone" class="col-xs-6">
+                <strong>Mobile Phone: </strong><p t-field="o.mobile_phone"/>
               </div>
 
-              <div t-if="o.request_Date" class="col-xs-6">
-                <strong>Request Date: </strong><p t-field="o.request_Date"/>
-              </div>
-
-              <div t-if="o.description" class="col-xs-12">
-                <strong>Description: </strong><p t-field="o.description"/>
+              <div t-if="o.work_email" class="col-xs-6">
+                <strong>Work Email: </strong><p t-field="o.work_email"/>
               </div>
 
               <div t-if="o.active_Periode" class="col-xs-6">
-                <strong>Periode: </strong><p t-field="o.active_Periode"/>
+                <strong>Expiry Date: </strong><p t-field="o.active_Periode"/>
               </div>
+
+              <div t-if="o.card_Id" class="col-xs-6">
+                <img t-if="o.card_Id" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', o.card_Id, 600, 150)" style="width:100%;height:20%;"/>
+                <span t-field="o.card_Id"/>
+              </div>
+              
             </div>
           </t>
         </div>
