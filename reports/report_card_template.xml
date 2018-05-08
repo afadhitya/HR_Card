@@ -35,7 +35,7 @@
             </div>
 
             <div t-if="o.description" class="col-xs-12">
-              <strong>Details: </strong><p t-field="o.description"/>
+              <strong>Description: </strong><p t-field="o.description"/>
             </div>
 
             <div t-if="o.active_Periode" class="col-xs-6">
