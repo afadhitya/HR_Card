@@ -6,7 +6,7 @@
 	'data': [
 		'views/card_menu.xml',
 		'views/card_view.xml',
-		'reports/report_vote.xml'
+		'reports/print_card.xml'
 	],
 	'application': False,
 }
