@@ -13,7 +13,9 @@
 
 					<button name="do_refuse" type="object" string="Refuse" class="btn-primary" states="waiting"/>
 
-					<button name="%(action_card_report)d" string="Print Card" type="action" class="btn-primary" states="progress"/>
+					<button name="%(action_card_report)d" string="Print Card" type="action" class="btn-primary" attrs="{'invisible':['|',('card_Type','!=','id_card'), ('state','!=','progress')]}"/>
+
+					<button name="%(action_business_card_report)d" string="Print Card" type="action" class="btn-primary" attrs="{'invisible':['|',('card_Type','!=','business_card'), ('state','!=','progress')]}"/>	
 
 					<button name="do_done" type="object" string="Done" class="btn-primary" states="progress"/>
 
@@ -28,8 +30,10 @@
 							<group string="Employee Information">
 								<field name="image" widget="image"/>
 								<field name="employee_ids"/>
+								<field name="company_id"/>
 								<field name="department_id"/>
 								<field name="job_title"/>
+								<field name="address_home_id"/>
 								<field name="address_home_id"/>
 								<field name="work_email"/>
 								<field name="work_phone"/>
@@ -41,9 +45,9 @@
 					<group>
 							<group string="Card Information" colspan="4">
 								<field name="card_Type"/>
-								<field name="card_Id"/>
+								<field name="card_Id" attrs="{'invisible':[('card_Type','!=','id_card')]}"/>
 								<field name="request_Date"/>
-								<field name="status"/>
+								<field name="status" attrs="{'invisible':[('card_Type','!=','id_card')]}"/>
 								<field name="active_Periode" attrs="{'invisible':[('status','!=','temporary')]}"/>
 							</group>
 						</group>
@@ -57,6 +61,21 @@
 					</group>
 				</sheet>
 			</form>
+		</field>
+	</record>
+
+	<record id="view_tree_print_card" model="ir.ui.view">
+		<field name="name">Print Card Tree</field>
+		<field name="model">print.card</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="card_Id"/>
+				<field name="card_Type"/>
+				<field name="employee_ids"/>
+				<field name="department_id"/>
+				<field name="request_Date"/>
+				<field name="status"/>
+			</tree>
 		</field>
 	</record>
 </odoo>

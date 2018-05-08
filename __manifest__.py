@@ -7,7 +7,9 @@
 		'views/card_menu.xml',
 		'views/card_view.xml',
 		'reports/print_card.xml',
-		'reports/report_card_template.xml'
+		'reports/report_card_template.xml',
+		'reports/print_business_card.xml',
+		'reports/report_business_card_template.xml'
 	],
 	'application': False,
 }

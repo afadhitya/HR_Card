@@ -101,6 +101,7 @@ class PrintCard(models.Model):
 	work_email = fields.Char('Work Email', default=_current_email, readonly=True)
 	work_phone = fields.Char('Work Phone', default=_current_phone, readonly=True)
 	mobile_phone = fields.Char('Work Mobile', default=_current_mobile, readonly=True)
+	logo = fields.Binary(string="Company Logo", default=_current_user, readonly=True)
 	gender = fields.Selection([
         ('male', 'Male'),
         ('female', 'Female'),
@@ -125,7 +126,7 @@ class PrintCard(models.Model):
 		('permanent', 'Permanent'),
 		('temporary','Temporary')
 	), string='Status')
-	active_Periode = fields.Date(string='Active Periode')
+	active_Periode = fields.Date(string='Expiry Date')
 
 	state = fields.Selection([
         ('draft', 'Draft'),
