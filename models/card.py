@@ -43,7 +43,7 @@ class BusinessCard(models.Model):
 	@api.model
 	def _default_image(self):
 		image_path = get_module_resource('hr','static/src/img','default_image.png')
-		return tools.image_resize_image_big(open(image_path,'rb').read().encode('base64')) 
+		return tools.image_resize_image_big(open(image_path,'rb').read().encode('base64'))
 
 	#Employee Information
 	company_id = fields.Many2one('res.company', 'Company', default=_current_user,readonly=True)
@@ -59,7 +59,7 @@ class BusinessCard(models.Model):
              "Use this field in form views or some kanban views.")
 	#Card Informationr
 	card_Type = fields.Selection((('business_card','Business Card'),('id_card','Id Card')),string='Card Type', required=True)
-	card_Id = fields.Integer(string='Card No')
+	card_Id = fields.Char(string='Card No')
 	request_Date= fields.Date(string='Request Date', default=datetime.now(), readonly=True)
 	description = fields.Text('Notes',required=True)
 	status	= fields.Selection((('permanent','Permanent'),('temporary','Temporary')),string='Status')
@@ -72,12 +72,3 @@ class BusinessCard(models.Model):
         ('closed', 'Closed'),
         ('reject', 'Reject'),
         ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', default='new')
-
-
-
-
-
-
-    	
-    
-
