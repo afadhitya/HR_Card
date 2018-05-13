@@ -3,7 +3,7 @@
 	<!-- Action to open module list -->
 	<act_window id="action_card"
 		name="Employee Card"
-		res_model="print.card"
+		res_model="hr.card"
 		view_mode="tree,form"/>
 		
 	<menuitem id="side_menu_card"

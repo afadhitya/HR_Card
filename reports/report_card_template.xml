@@ -1,71 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <template id="report_card_template">
-    <t t-call="report.html_container">
-      <t t-call="report.external_layout">
-        <div class="page">
-          <t t-foreach="docs" t-as="o">
-            <div class="row mt32 mb32" id="informations">
+  <data>
+    <template id="report_card_template">
+      <t t-call="report.html_container">
+        <t t-call="report.external_layout">
+          <div class="page">
+            <t t-foreach="docs" t-as="o">
+              <div class="row mt32 mb32" id="informations">
 
-              <div t-if="o.company_id" class="col-xs-6">
-                <strong>Company: </strong><p t-field="o.company_id"/>
-              </div>
+                <div t-if="o.job_title.company_id.logo_web" class="col-xs-12">
+                  <strong>Company: </strong>
+                  <img t-attf-src="data:image/*;base64,{{o.job_title.company_id.logo_web}}" style="width:100px;" class="col-xs-12"/>
+                  <p t-field="o.job_title.company_id" class="col-xs-12"/>
+                </div>
+                <div t-if="o.employee_ids.image" class="col-xs-12">
+                  <img t-attf-src="data:image/*;base64,{{o.employee_ids.image}}" style="width:200px;"/>
+                </div>
 
-              <div t-if="o.image" class="col-xs-6">
-                <img t-attf-src="data:image/*;base64,{{o.image}}" style="width:100%;height:20%;"/>
-              </div>
+                <div t-if="o.job_title" class="col-xs-6">
+                  <strong>Job Title: </strong><p t-field="o.job_title"/>
+                </div>
 
-              <div t-if="o.job_title" class="col-xs-6">
-                <strong>Job Title: </strong><p t-field="o.job_title"/>
-              </div>
+                <div t-if="o.employee_ids" class="col-xs-6">
+                  <strong>Employee: </strong><p t-field="o.employee_ids"/>
+                </div>
 
-              <div t-if="o.employee_ids" class="col-xs-6">
-                <strong>Employee: </strong><p t-field="o.employee_ids"/>
-              </div>
+                <div t-if="o.department_id" class="col-xs-6">
+                  <strong>Department: </strong><p t-field="o.department_id"/>
+                </div>
 
-              <div t-if="o.department_id" class="col-xs-6">
-                <strong>Department: </strong><p t-field="o.department_id"/>
-              </div>
+                <div t-if="o.employee_ids.gender" class="col-xs-6">
+                  <strong>Gender: </strong><p t-field="o.employee_ids.gender"/>
+                </div>
 
-              <div t-if="o.gender" class="col-xs-6">
-                <strong>Gender: </strong><p t-field="o.gender"/>
-              </div>
+                <div t-if="o.employee_ids.birthday" class="col-xs-6">
+                  <strong>Birthday: </strong><p t-field="o.employee_ids.birthday"/>
+                </div>
 
-              <div t-if="o.birthday" class="col-xs-6">
-                <strong>Birthday: </strong><p t-field="o.birthday"/>
-              </div>
+                <div t-if="o.employee_ids.address_home_id" class="col-xs-6">
+                  <strong>Address: </strong><p t-field="o.employee_ids.address_home_id.street"/>
+                  <p t-field="o.employee_ids.address_home_id.street2"/>
+                  <span t-field="o.employee_ids.address_home_id.city"/><span t-field="o.employee_ids.address_home_id.state_id"/><span t-field="o.employee_ids.address_home_id.zip"/>
+                </div>
 
-              <div t-if="o.address_home_id" class="col-xs-6">
-                <strong>Address: </strong><p t-field="o.address_home_id.street"/>
-                <p t-field="o.address_home_id.street2"/>
-                <span t-field="o.address_home_id.city"/><span t-field="o.address_home_id.state_id"/><span t-field="o.address_home_id.zip"/>
-              </div>
+                <div t-if="o.employee_ids.work_phone" class="col-xs-6">
+                  <strong>Work Phone: </strong><p t-field="o.employee_ids.work_phone"/>
+                </div>
 
-              <div t-if="o.work_phone" class="col-xs-6">
-                <strong>Work Phone: </strong><p t-field="o.work_phone"/>
-              </div>
+                <div t-if="o.employee_ids.mobile_phone" class="col-xs-6">
+                  <strong>Mobile Phone: </strong><p t-field="o.employee_ids.mobile_phone"/>
+                </div>
 
-              <div t-if="o.mobile_phone" class="col-xs-6">
-                <strong>Mobile Phone: </strong><p t-field="o.mobile_phone"/>
-              </div>
+                <div t-if="o.employee_ids.work_email" class="col-xs-6">
+                  <strong>Work Email: </strong><p t-field="o.employee_ids.work_email"/>
+                </div>
 
-              <div t-if="o.work_email" class="col-xs-6">
-                <strong>Work Email: </strong><p t-field="o.work_email"/>
-              </div>
+                <div t-if="o.active_Periode" class="col-xs-6">
+                  <strong>Expiry Date: </strong><p t-field="o.active_Periode"/>
+                </div>
 
-              <div t-if="o.active_Periode" class="col-xs-6">
-                <strong>Expiry Date: </strong><p t-field="o.active_Periode"/>
+                <div t-if="o.card_Id" class="col-xs-6">
+                  <img t-if="o.card_Id" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', o.card_Id, 600, 150)" style="width:100%;height:20%;"/>
+                  <span t-field="o.card_Id"/>
+                </div>
               </div>
-
-              <div t-if="o.card_Id" class="col-xs-6">
-                <img t-if="o.card_Id" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', o.card_Id, 600, 150)" style="width:100%;height:20%;"/>
-                <span t-field="o.card_Id"/>
-              </div>
-              
-            </div>
-          </t>
-        </div>
+            </t>
+          </div>
+        </t>
       </t>
-    </t>
-  </template>
+    </template>
+
+    <template id="report_card_template_table">
+      <t t-call="report.html_container">
+        
+          <div class="page">
+            <t t-foreach="docs" t-as="o">
+              <table style="border-spacing:0;height:700px;width:500px;border: 1px solid black;" class="table">
+                <tbody>
+                  <tr style="height:30%;background-color: #b3b3b3;">
+                    <td>
+                      <img t-attf-src="data:image/*;base64,{{o.job_title.company_id.logo_web}}" style="width:100%;"/>
+                      <center><p t-field="o.job_title.company_id"/></center>
+                    </td>
+                  </tr>
+                  <tr style="height:70%;background-color: #f2f2f2;">
+                    <td>
+                      <div>
+                        <img t-attf-src="data:image/*;base64,{{o.employee_ids.image}}" style="width:200px;"/>
+                      </div>
+                      <div>
+                        <strong>Department: </strong><span t-field="o.department_id"/>
+                      </div>
+                      <div>
+                        <strong>Gender: </strong><span t-field="o.employee_ids.gender"/>
+                      </div>
+                      <div>
+                        <strong>Job Title : </strong><span t-field="o.job_title"/>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </t>
+          </div>
+        
+      </t>
+    </template>
+  </data>
 </odoo>

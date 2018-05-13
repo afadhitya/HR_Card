@@ -7,7 +7,7 @@ from odoo.modules.module import get_module_resource
 import logging
 
 class PrintCard(models.Model):
-	_name = 'print.card'
+	_name = 'hr.card'
 	_description = 'Model for print card.'
 
 	@api.model
@@ -43,70 +43,13 @@ class PrintCard(models.Model):
 		_logger.debug('RESOURCE ID: ' + str(employee.name_related))
 		return employee.image
 
-	@api.model
-	def _current_birthday(self):
-		resource = self.env['resource.resource'].search([('user_id','=', self.env.uid)])[0]
-		employee = self.env['hr.employee'].search([('resource_id','=', resource.id)])[0]
-		_logger = logging.getLogger(__name__)
-		_logger.debug('RESOURCE ID: ' + str(employee.name_related))
-		return employee.birthday
-
-	@api.model
-	def _current_email(self):
-		resource = self.env['resource.resource'].search([('user_id','=', self.env.uid)])[0]
-		employee = self.env['hr.employee'].search([('resource_id','=', resource.id)])[0]
-		_logger = logging.getLogger(__name__)
-		_logger.debug('RESOURCE ID: ' + str(employee.name_related))
-		return employee.work_email
-
-	@api.model
-	def _current_phone(self):
-		resource = self.env['resource.resource'].search([('user_id','=', self.env.uid)])[0]
-		employee = self.env['hr.employee'].search([('resource_id','=', resource.id)])[0]
-		_logger = logging.getLogger(__name__)
-		_logger.debug('RESOURCE ID: ' + str(employee.name_related))
-		return employee.work_phone
-
-	@api.model
-	def _current_mobile(self):
-		resource = self.env['resource.resource'].search([('user_id','=', self.env.uid)])[0]
-		employee = self.env['hr.employee'].search([('resource_id','=', resource.id)])[0]
-		_logger = logging.getLogger(__name__)
-		_logger.debug('RESOURCE ID: ' + str(employee.name_related))
-		return employee.mobile_phone
-
-	@api.model
-	def _current_gender(self):
-		resource = self.env['resource.resource'].search([('user_id','=', self.env.uid)])[0]
-		employee = self.env['hr.employee'].search([('resource_id','=', resource.id)])[0]
-		_logger = logging.getLogger(__name__)
-		_logger.debug('RESOURCE ID: ' + str(employee.name_related))
-		return employee.gender
-
-	@api.model
-	def _current_home(self):
-		resource = self.env['resource.resource'].search([('user_id','=', self.env.uid)])[0]
-		employee = self.env['hr.employee'].search([('resource_id','=', resource.id)])[0]
-		_logger = logging.getLogger(__name__)
-		_logger.debug('RESOURCE ID: ' + str(employee.name_related))
-		return employee.address_home_id
-
 	#Employee Information
-	company_id = fields.Many2one('res.company', 'Company', default=_current_user, readonly=True)
-	employee_ids = fields.Many2one('res.users', string='Employee', track_visibility='onchange', default=_current_user, readonly=True)
+	
+	employee_ids = fields.Many2one('hr.employee', string='Employee', track_visibility='onchange', default=_current_user, readonly=True)
 	department_id = fields.Many2one('hr.department', string='Department', default=_current_department, readonly=True)
 	job_title = fields.Many2one('hr.job', string='Job Title', default=_current_job, readonly=True)
-	address_home_id = fields.Many2one('res.partner', string='Home Address', default=_current_home, readonly=True)
-	birthday = fields.Date('Date of Birth', default=_current_birthday, readonly=True)
-	work_email = fields.Char('Work Email', default=_current_email, readonly=True)
-	work_phone = fields.Char('Work Phone', default=_current_phone, readonly=True)
-	mobile_phone = fields.Char('Work Mobile', default=_current_mobile, readonly=True)
+	
 	logo = fields.Binary(string="Company Logo", default=_current_user, readonly=True)
-	gender = fields.Selection([
-        ('male', 'Male'),
-        ('female', 'Female'),
-        ('other', 'Other')
-    ], default=_current_gender, readonly=True)
 	image = fields.Binary(string="Photo", default=_current_image, attachment=True, readonly=True,
 		help="This field holds the image used as photo for the employee, limited to 1024x1024px.")
 	image_medium = fields.Binary("Medium-sized photo", attachment=True,
