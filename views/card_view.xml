@@ -28,7 +28,6 @@
 					<group name="group_top">
 						<group>
 							<group string="Employee Information">
-								<field name="image" widget="image"/>
 								<field name="employee_ids"/>
 								<field name="department_id"/>
 								<field name="job_title"/>

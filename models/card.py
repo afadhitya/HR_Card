@@ -35,14 +35,6 @@ class PrintCard(models.Model):
 		return employee.job_id
 		
 
-	@api.model
-	def _current_image(self):
-		resource = self.env['resource.resource'].search([('user_id','=', self.env.uid)])[0]
-		employee = self.env['hr.employee'].search([('resource_id','=', resource.id)])[0]
-		_logger = logging.getLogger(__name__)
-		_logger.debug('RESOURCE ID: ' + str(employee.name_related))
-		return employee.image
-
 	#Employee Information
 	
 	employee_ids = fields.Many2one('hr.employee', string='Employee', track_visibility='onchange', default=_current_user, readonly=True)
@@ -50,12 +42,7 @@ class PrintCard(models.Model):
 	job_title = fields.Many2one('hr.job', string='Job Title', default=_current_job, readonly=True)
 	
 	logo = fields.Binary(string="Company Logo", default=_current_user, readonly=True)
-	image = fields.Binary(string="Photo", default=_current_image, attachment=True, readonly=True,
-		help="This field holds the image used as photo for the employee, limited to 1024x1024px.")
-	image_medium = fields.Binary("Medium-sized photo", attachment=True,
-        help="Medium-sized photo of the employee. It is automatically "
-             "resized as a 128x128px image, with aspect ratio preserved. "
-             "Use this field in form views or some kanban views.")
+
 
 	#Card Information
 	card_Type = fields.Selection((
