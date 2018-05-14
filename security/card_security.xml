@@ -10,7 +10,7 @@
     </record>
 
 
-    <data noupdate="1">
+    <data noupdate="0">
         <record id="personal_card" model="ir.rule">
             <field name="name">Personal Cards</field>
             <field name="model_id" ref="model_hr_card"/>
