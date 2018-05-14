@@ -5,7 +5,7 @@
         id="action_card_report"
         string="Print Card"
         model="hr.card"
-        report_type="qweb-pdf"
+        report_type="qweb-html"
         file="report_card_template"
         name="HR_Card.report_card_template_table"
         menu="False"/>
