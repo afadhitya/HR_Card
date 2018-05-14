@@ -2,43 +2,55 @@
 <odoo>
   <template id="report_business_card_template">
     <t t-call="report.html_container">
-      <t t-call="report.external_layout">
+      
         <div class="page">
           <t t-foreach="docs" t-as="o">
             <div class="row mt32 mb32" id="informations">
 
-              <div t-if="o.job_title.company_id.logo_web" class="col-xs-12">
-                <strong>Company: </strong>
-                <img t-attf-src="data:image/*;base64,{{o.job_title.company_id.logo_web}}" style="width:100px;" class="col-xs-12"/>
-                <p t-field="o.job_title.company_id" class="col-xs-12"/>
-              </div>
 
-              <div t-if="o.employee_ids" class="col-xs-6">
-                <strong>Employee: </strong><p t-field="o.employee_ids"/>
-              </div>
+              <div style="width: 700px;height: 350px;border: 1px solid black;">
+                <div style="width: 100%;float: left;height: 100px;">
+                  <div t-if="o.job_title.company_id.logo_web" style="margin-top:30px;">
+                    <img t-attf-src="data:image/*;base64,{{o.job_title.company_id.logo_web}}" style="width:100px;" class="col-xs-12"/>
+                    <strong style="font-size:20px;"><span t-field="o.job_title.company_id"/></strong>
+                  </div>
+                </div>
+                <div style="width: 100%;float: left;height: 150px;background-color:#161616;">
+                  <center style="margin-top: 45px">
+                    <div t-if="o.employee_ids">
+                      <strong style="font-size:25px;color: #ffd700;"><span t-field="o.employee_ids"/></strong>
+                    </div>
+                    <div t-if="o.job_title">
+                      <strong style="font-size:18px;color: white;"><span t-field="o.job_title"/></strong>
+                    </div>
+                  </center>
+                </div>
+                <div style="width: 50%;float: left;height: 100px;">
+                  <div style="margin-top: 15px;">
+                      <div t-field="o.job_title.company_id.street"/>
+                      <div t-field="o.job_title.company_id.street2"/>
+                      <span t-field="o.job_title.company_id.city"/> <span t-field="o.job_title.company_id.state_id"/> <span t-field="o.job_title.company_id.zip"/>
+                  </div>
+                    <span t-field="o.job_title.company_id.email"/>
+                  </div>
+                <div style="width: 50%;float: right;height: 100px;">
+                  <div style="margin-left: 50%;margin-top: 25px">
+                    <strong>Phone :</strong><span>10293</span>
+                  </div>
+                  <div style="margin-left: 50%;">
+                     <strong>Fax: </strong><span t-field="o.job_title.company_id.fax"/>
+                  </div>
+                  <div style="margin-left: 50%;">
+                    <strong>Cell: </strong><span t-field="o.job_title.company_id.phone"/>
+                  </div>
+                </div>
+            </div>
 
-              <div t-if="o.job_title.company_id" class="col-xs-6">
-                <strong>Company Address: </strong><p t-field="o.job_title.company_id.street"/>
-                <p t-field="o.job_title.company_id.street2"/>
-                <span t-field="o.job_title.company_id.city"/> <span t-field="o.job_title.company_id.state_id"/> <span t-field="o.job_title.company_id.zip"/>
-              </div>
-
-               <div t-if="o.job_title.company_id" class="col-xs-6">
-                <strong>Company Phone: </strong><p t-field="o.job_title.company_id.phone"/>
-              </div>
-
-               <div t-if="o.job_title.company_id" class="col-xs-6">
-                <strong>Company Fax: </strong><p t-field="o.job_title.company_id.fax"/>
-              </div>
-
-              <div t-if="o.job_title.company_id" class="col-xs-6">
-                <strong>Company Email: </strong><p t-field="o.job_title.company_id.email"/>
-              </div>
 
             </div>
           </t>
         </div>
-      </t>
+      
     </t>
   </template>
 </odoo>
