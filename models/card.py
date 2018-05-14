@@ -9,7 +9,8 @@ import logging
 class PrintCard(models.Model):
 	_name = 'hr.card'
 	_description = 'Model for print card.'
-
+	_inherit = ['mail.thread']
+	
 	@api.model
 	def _current_department(self):
 		resource = self.env['resource.resource'].search([('user_id','=', self.env.uid)])[0]
