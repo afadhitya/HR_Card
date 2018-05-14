@@ -69,8 +69,9 @@ class PrintCard(models.Model):
 
 	@api.one
 	def do_send_approval(self):
-		self.write({'state': 'waiting'})
-		return True
+		if self.env['hr.card'].search([('create_uid','=', self.env.uid)]):
+			self.write({'state': 'waiting'})
+			return True
 
 	@api.one
 	def do_approve(self):
