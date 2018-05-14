@@ -7,17 +7,17 @@
 			<form>
 				<header>
 				<!-- Button go here -->
-					<button name="do_send_approval" type="object" string="Send Approval" class="btn-primary" states="draft" />
+					<button name="do_send_approval" type="object" string="Send Approval" class="btn-primary" states="draft"/>
 
-					<button name="do_approve" type="object" string="Approve" class="btn-primary" states="waiting"/>
+					<button name="do_approve" type="object" string="Approve" class="btn-primary" states="waiting" groups="hr.group_hr_user"/>
 
-					<button name="do_refuse" type="object" string="Refuse" class="btn-primary" states="waiting"/>
+					<button name="do_refuse" type="object" string="Refuse" class="btn-primary" states="waiting" groups="hr.group_hr_user"/>
 
-					<button name="%(action_card_report)d" string="Print Card" type="action" class="btn-primary" attrs="{'invisible':['|',('card_Type','!=','id_card'), ('state','!=','progress')]}"/>
+					<button name="%(action_card_report)d" string="Print Card" type="action" class="btn-primary" attrs="{'invisible':['|',('card_Type','!=','id_card'), ('state','!=','progress')]}" groups="hr.group_hr_user"/>
 
-					<button name="%(action_business_card_report)d" string="Print Card" type="action" class="btn-primary" attrs="{'invisible':['|',('card_Type','!=','business_card'), ('state','!=','progress')]}"/>	
+					<button name="%(action_business_card_report)d" string="Print Card" type="action" class="btn-primary" attrs="{'invisible':['|',('card_Type','!=','business_card'), ('state','!=','progress')]}" groups="hr.group_hr_user"/>	
 
-					<button name="do_done" type="object" string="Done" class="btn-primary" states="progress"/>
+					<button name="do_done" type="object" string="Done" class="btn-primary" states="progress" groups="hr.group_hr_user"/>
 
 					<field name="state" widget="statusbar" statusbar_visible="draft,waiting,progress,done" on_change="1" modifiers="{'readonly': true}"/>
 				</header>
@@ -39,7 +39,7 @@
 								<field name="card_Id" attrs="{'invisible':[('card_Type','!=','id_card')]}"/>
 								<field name="request_Date"/>
 								<field name="status" attrs="{'invisible':[('card_Type','!=','id_card')]}"/>
-								<field name="active_Periode" attrs="{'invisible':[('status','!=','temporary')]}"/>
+								<field name="active_Periode" attrs="{'invisible':['|', ('status','!=','temporary'), ('card_Type','!=','id_card')]}"/>
 							</group>
 						</group>
 					</group>
