@@ -10,7 +10,7 @@ class PrintCard(models.Model):
 	_name = 'hr.card'
 	_description = 'Model for print card.'
 	_inherit = ['mail.thread']
-	
+
 	@api.model
 	def _current_department(self):
 		resource = self.env['resource.resource'].search([('user_id','=', self.env.uid)])[0]
@@ -34,7 +34,7 @@ class PrintCard(models.Model):
 		_logger = logging.getLogger(__name__)
 		_logger.debug('RESOURCE ID: ' + str(employee.name_related))
 		return employee.job_id
-	
+
 	@api.model
 	def _current_id(self):
 		resource = self.env['resource.resource'].search([('user_id','=', self.env.uid)])[0]
@@ -45,15 +45,24 @@ class PrintCard(models.Model):
 		idcard = str(employee.id)
 		dept = str(employee.department_id.id)
 		tanggal = datetime.now().strftime("%d%m%y")
+
+		if len(idcard) == 1 :
+			idcard ='00'+idcard
+		elif len(idcard) == 2:
+			idcard ='0'+idcardss
+
+		if len(dept) == 1:
+			dept = '0'+ dept
+
 		idcard = idcard + dept + tanggal
 		return idcard
 
 	#Employee Information
-	
+
 	employee_ids = fields.Many2one('hr.employee', string='Employee', track_visibility='onchange', default=_current_user, readonly=True)
 	department_id = fields.Many2one('hr.department', string='Department', default=_current_department, readonly=True)
 	job_title = fields.Many2one('hr.job', string='Job Title', default=_current_job, readonly=True)
-	
+
 	logo = fields.Binary(string="Company Logo", default=_current_user, readonly=True)
 
 
@@ -62,7 +71,7 @@ class PrintCard(models.Model):
 		('business_card', 'Business Card'),
 		('id_card','Id Card')
 	), string='Card Type', required=True)
-	card_Id = fields.Char(string='Card No', default=_current_id);
+	card_Id = fields.Char(string='Card No', default=_current_id, readonly=True);
 	request_Date= fields.Date(string='Requested Date', default=datetime.now(), readonly=True)
 	description = fields.Text('Notes', required=True)
 	status = fields.Selection((
