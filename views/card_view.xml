@@ -7,9 +7,12 @@
 			<form edit="false">
 				<header>
 				<!-- Button go here -->
-					<button name="do_send_approval" type="object" string="Send Approval" class="btn-primary" states="draft"/>
+					<!--<button name="do_send_approval" type="object" string="Send Approval" class="btn-primary" states="draft"/>-->
 
 					<button name="do_approve" type="object" string="Approve" class="btn-primary" states="waiting" groups="hr.group_hr_user"/>
+
+					<!-- Button Email -->
+					<button name="action_approval_send" string="Send by Email" type="object" states="draft"  groups="hr.group_hr_user" class="btn-primary"/>
 
 					<button name="do_refuse" type="object" string="Refuse" class="btn-primary" states="waiting" groups="hr.group_hr_user"/>
 
@@ -36,8 +39,7 @@
 					<group>
 							<group string="Card Information" colspan="4">
 								<field name="card_Type"/>
-								<!--<field name="card_Id" attrs="{'invisible':[('card_Type','!=','id_card')]}"/>-->
-								<field name="card_Id"/>
+								<field name="card_Id" attrs="{'invisible':[('card_Type','!=','id_card')]}"/>
 								<field name="request_Date"/>
 								<field name="status" attrs="{'invisible':[('card_Type','!=','id_card')]}"/>
 								<field name="active_Periode" attrs="{'invisible':['|', ('status','!=','temporary'), ('card_Type','!=','id_card')]}"/>
