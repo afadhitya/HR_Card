@@ -36,7 +36,8 @@
 					<group>
 							<group string="Card Information" colspan="4">
 								<field name="card_Type"/>
-								<field name="card_Id" attrs="{'invisible':[('card_Type','!=','id_card')]}"/>
+								<!--<field name="card_Id" attrs="{'invisible':[('card_Type','!=','id_card')]}"/>-->
+								<field name="card_Id"/>
 								<field name="request_Date"/>
 								<field name="status" attrs="{'invisible':[('card_Type','!=','id_card')]}"/>
 								<field name="active_Periode" attrs="{'invisible':['|', ('status','!=','temporary'), ('card_Type','!=','id_card')]}"/>
