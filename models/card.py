@@ -10,7 +10,7 @@ class PrintCard(models.Model):
 	_name = 'hr.card'
 	_description = 'Model for print card.'
 	_inherit = ['mail.thread']
-	
+
 	@api.model
 	def _current_department(self):
 		resource = self.env['resource.resource'].search([('user_id','=', self.env.uid)])[0]
@@ -56,14 +56,14 @@ class PrintCard(models.Model):
 
 		idcard = idcard + dept + tanggal
 		return idcard
-		
+
 
 	#Employee Information
-	
+
 	employee_ids = fields.Many2one('hr.employee', string='Employee', track_visibility='onchange', default=_current_user, readonly=True)
 	department_id = fields.Many2one('hr.department', string='Department', default=_current_department, readonly=True)
 	job_title = fields.Many2one('hr.job', string='Job Title', default=_current_job, readonly=True)
-	
+
 	logo = fields.Binary(string="Company Logo", default=_current_user, readonly=True)
 
 
@@ -79,7 +79,7 @@ class PrintCard(models.Model):
 		('permanent', 'Permanent'),
 		('temporary','Temporary')
 	), string='Status')
-	active_Periode = fields.Date(string='Expiry Date')
+	active_Periode = fields.Date(string='Expire Date')
 
 	state = fields.Selection([
         ('draft', 'Draft'),
