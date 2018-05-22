@@ -123,7 +123,9 @@ class PrintCard(models.Model):
 		self.ensure_one()
 		ir_model_data = self.env['ir.model.data']
 		try:
-			template_id = ir_model_data.get_object_reference('sale','email_template_edi_sale')[1]
+			template_id = ir_model_data.get_object_reference('HR_Card','email_template_edi_card')[1]
+			#template_id = self.env.ref('model.email_template_edi_card')
+			#template_id.send_mail(self.ids[0], force_send=True)
 		except ValueError:
 			template_id = False
 
@@ -140,7 +142,6 @@ class PrintCard(models.Model):
 			'default_template_id': template_id,
 			'default_composition_mode': 'comment',
 			'mark_so_as_sent': True,
-			'custom_layout': "sale.mail_template_data_notification_email_sale_order"
 
 			})
 		self.write({'state': 'waiting'})
