@@ -49,7 +49,7 @@ class PrintCard(models.Model):
 	card_Type = fields.Selection((
 		('business_card', 'Business Card'),
 		('id_card','Id Card')
-	), string='Card Type', required=True, readonly=True)
+	), string='Card Type', required=True)
 	card_Id = fields.Char(string='Card No')
 	request_Date= fields.Date(string='Requested Date', default=datetime.now(), readonly=True)
 	description = fields.Text('Notes', required=True)
