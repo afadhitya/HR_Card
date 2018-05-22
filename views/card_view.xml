@@ -12,7 +12,7 @@
 					<button name="do_approve" type="object" string="Approve" class="btn-primary" states="waiting" groups="hr.group_hr_user"/>
 
 					<!-- Button Email -->
-					<button name="action_approval_send" string="Send by Email" type="object" states="draft"  groups="hr.group_hr_user" class="btn-primary"/>
+					<button name="action_approval_send" string="Send by Email" type="object" states="draft"  groups="HR_Card.group_card_user" class="btn-primary"/>
 
 					<button name="do_refuse" type="object" string="Refuse" class="btn-primary" states="waiting" groups="hr.group_hr_user"/>
 
