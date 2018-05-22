@@ -57,6 +57,11 @@ class PrintCard(models.Model):
 		idcard = idcard + dept + tanggal
 		return idcard
 
+	@api.model
+	def _current_id_access(self):
+		idCardAccess = '0000000'
+		return idCardAccess
+
 
 	#Employee Information
 
@@ -70,9 +75,11 @@ class PrintCard(models.Model):
 	#Card Information
 	card_Type = fields.Selection((
 		('business_card', 'Business Card'),
-		('id_card','Id Card')
+		('id_card','Id Card'),
+		('access_card','Access Card')
 	), string='Card Type', required=True)
 	card_Id = fields.Char(string='Card No', default=_current_id, readonly=True)
+	card_Id2 = fields.Char(string='Card No', default=_current_id_access, readonly=True)
 	request_Date= fields.Date(string='Requested Date', default=datetime.now(), readonly=True)
 	description = fields.Text('Notes', required=True)
 	status = fields.Selection((
