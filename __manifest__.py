@@ -12,6 +12,7 @@
 		'reports/report_business_card_template.xml',
 		'views/card_menu.xml',
 		'views/card_view.xml',
+		'data/mail_template_data2.xml',
 	],
 	'application': False,
 }
