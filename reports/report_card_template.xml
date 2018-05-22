@@ -60,7 +60,7 @@
                 </div>
 
                 <div t-if="o.card_Id" class="col-xs-6">
-                  <img t-if="o.card_Id" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', o.card_Id, 600, 150)" style="width:100%;height:20%;"/>
+                  <img t-if="o.card_Id" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.card_Id, 400, 400)" style="width:100%;height:20%;"/>
                   <span t-field="o.card_Id"/>
                 </div>
               </div>
@@ -108,7 +108,7 @@
 
                     </div>
                       <div t-if="o.card_Id" class="col-xs-12">
-                        <img t-if="o.card_Id" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.card_Id, 600, 150)" style="margin-top:30px; width:50%;height:20%;"/>
+                        <img t-if="o.card_Id" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.card_Id, 400, 400)" style="margin-top:30px; width:50%;height:20%;"/>
                         <div class="col-xs-12"><span t-field="o.card_Id"/></div>
                       </div>
                       </center>
