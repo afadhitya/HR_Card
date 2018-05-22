@@ -20,6 +20,8 @@
 
 					<button name="%(action_business_card_report)d" string="Print Card" type="action" class="btn-primary" attrs="{'invisible':['|',('card_Type','!=','business_card'), ('state','!=','progress')]}" groups="hr.group_hr_user"/>
 
+					<button name="%(action_access_card_report)d" string="Print Card" type="action" class="btn-primary" attrs="{'invisible':['|',('card_Type','!=','access_card'), ('state','!=','progress')]}" groups="hr.group_hr_user"/>
+
 					<button name="do_done" type="object" string="Done" class="btn-primary" states="progress" groups="hr.group_hr_user"/>
 
 					<field name="state" widget="statusbar" statusbar_visible="draft,waiting,progress,done" on_change="1" modifiers="{'readonly': true}"/>

@@ -1,0 +1,13 @@
+<!--Custom report.-->
+<odoo>
+  <data>
+    <report
+        id="action_access_card_report"
+        string="Print Card"
+        model="hr.card"
+        report_type="qweb-html"
+        file="report_access_card_template"
+        name="HR_Card.report_access_card_template_table"
+        menu="False"/>
+  </data>
+</odoo>

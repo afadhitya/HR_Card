@@ -10,6 +10,8 @@
 		'reports/report_card_template.xml',
 		'reports/print_business_card.xml',
 		'reports/report_business_card_template.xml',
+		'reports/print_access_card.xml',
+		'reports/report_access_card_template.xml',
 		'views/card_menu.xml',
 		'views/card_view.xml',
 	],
