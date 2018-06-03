@@ -20,7 +20,9 @@
 
 					<button name="%(action_business_card_report)d" string="Print Card" type="action" class="btn-primary" attrs="{'invisible':['|',('card_Type','!=','business_card'), ('state','!=','progress')]}" groups="hr.group_hr_user"/>
 
-					<button name="%(action_access_card_report)d" string="Print Card" type="action" class="btn-primary" attrs="{'invisible':['|',('card_Type','!=','access_card'), ('state','!=','progress')]}" groups="hr.group_hr_user"/>
+					<button name="%(action_access_card_report)d" string="Print Employee Access Card" type="action" class="btn-primary" attrs="{'invisible':['|','|',('card_Type','!=','access_card'), ('using_For','!=','employee'), ('state','!=','progress')]}" groups="hr.group_hr_user"/>
+
+					<button name="%(action_access_card_report_guest)d" string="Print Guest Access Card" type="action" class="btn-primary" attrs="{'invisible':['|','|',('card_Type','!=','access_card'), ('using_For','!=','guest'), ('state','!=','progress')]}" groups="hr.group_hr_user"/>
 
 					<button name="do_done" type="object" string="Done" class="btn-primary" states="progress" groups="hr.group_hr_user"/>
 
@@ -36,8 +38,8 @@
 								<field name="card_Type"/>
 								<field name="card_Id" attrs="{'invisible':[('card_Type','!=','id_card')]}"/>
 								<field name="using_For" attrs="{'invisible':[('card_Type','!=','access_card')]}"/>
-								<field name="card_IdEmployee" attrs="{'invisible':[('using_For','!=','employee')]}"/>
-								<field name="card_IdGuest" attrs="{'invisible':[('using_For','!=','guest')]}"/>
+								<field name="card_IdEmployee" attrs="{'invisible':['|', ('card_Type','!=','access_card'), ('using_For','!=','employee')]}"/>
+								<field name="card_IdGuest" attrs="{'invisible':['|', ('card_Type','!=','access_card'), ('using_For','!=','guest')]}"/>
 								<field name="request_Date"/>
 								<field name="status" attrs="{'invisible':[('card_Type','!=','id_card')]}"/>
 								<field name="active_Periode" attrs="{'invisible':['|', ('status','!=','temporary'), ('card_Type','!=','id_card')]}"/>

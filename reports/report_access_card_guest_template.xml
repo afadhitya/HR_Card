@@ -2,7 +2,7 @@
 <odoo>
   <data>
 
-    <template id="report_access_card_template_table">
+    <template id="report_access_card_guest_template_table">
       <t t-call="report.html_container">
           <div class="page">
             <t t-foreach="docs" t-as="o">
@@ -38,9 +38,9 @@
                     <div>
 
                     </div>
-                      <div t-if="o.card_IdEmployee" class="col-xs-12">
-                        <img t-if="o.card_IdEmployee" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.card_IdEmployee, 300, 300)" style="margin-top:20px; margin-bottom:20px; width:50%;height:20%;"/>
-                        <div class="col-xs-12"><span t-field="o.card_IdEmployee"/></div>
+                      <div t-if="o.card_IdGuest" class="col-xs-12">
+                        <img t-if="o.card_IdGuest" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.card_IdGuest, 300, 300)" style="margin-top:20px; margin-bottom:20px; width:50%;height:20%;"/>
+                        <div class="col-xs-12"><span t-field="o.card_IdGuest"/></div>
                       </div>
                       </center>
                     </td>
