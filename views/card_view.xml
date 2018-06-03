@@ -35,14 +35,16 @@
 							<group string="Card Information" colspan="4">
 								<field name="card_Type"/>
 								<field name="card_Id" attrs="{'invisible':[('card_Type','!=','id_card')]}"/>
-								<field name="card_Id2" attrs="{'invisible':[('card_Type','!=','access_card')]}"/>
+								<field name="using_For" attrs="{'invisible':[('card_Type','!=','access_card')]}"/>
+								<field name="card_IdEmployee" attrs="{'invisible':[('using_For','!=','employee')]}"/>
+								<field name="card_IdGuest" attrs="{'invisible':[('using_For','!=','guest')]}"/>
 								<field name="request_Date"/>
 								<field name="status" attrs="{'invisible':[('card_Type','!=','id_card')]}"/>
 								<field name="active_Periode" attrs="{'invisible':['|', ('status','!=','temporary'), ('card_Type','!=','id_card')]}"/>
 							</group>
 						</group>
 						<group>
-							<group string="Employee Information">
+							<group string="Employee Information" colspan="4">
 								<field name="employee_ids"/>
 								<field name="department_id"/>
 								<field name="job_title"/>

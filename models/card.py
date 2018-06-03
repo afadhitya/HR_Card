@@ -49,7 +49,7 @@ class PrintCard(models.Model):
 		if len(idcard) == 1 :
 			idcard ='00'+idcard
 		elif len(idcard) == 2:
-			idcard ='0'+idcardss
+			idcard ='0'+idcard
 
 		if len(dept) == 1:
 			dept = '0'+ dept
@@ -58,16 +58,71 @@ class PrintCard(models.Model):
 		return idcard
 
 	@api.model
-	def _current_id_access(self):
-		idCardAccess = '0000000'
-		return idCardAccess
+	def _current_id_access_employee(self):
+		resource = self.env['resource.resource'].search([('user_id','=', self.env.uid)])[0]
+		employee = self.env['hr.employee'].search([('resource_id','=', resource.id)])[0]
+		_logger = logging.getLogger(__name__)
+		_logger.debug('RESOURCE ID: ' + str(employee.name_related))
+
+		idcard = str(employee.id)
+		dept = str(employee.department_id.id)
+		tanggal = datetime.now().strftime("%d%m%y")
+
+		if len(idcard) == 1 :
+			idcard ='00'+idcard
+		elif len(idcard) == 2:
+			idcard ='0'+idcard
+
+		if len(dept) == 1:
+			dept = '0'+ dept
+
+		code = '00'
+
+		idcard = idcard + code + tanggal
+
+		# dict(self.field['using_For']._description_selection(self.evn)).get(self.using_For)
+		# self._fields['using_For'].get_values(self.env)
+		# dict(self._fields['using_For'].selection).get(self.using_For)
+
+
+		return idcard
+
+	@api.model
+	def _current_id_access_guest(self):
+		resource = self.env['resource.resource'].search([('user_id','=', self.env.uid)])[0]
+		employee = self.env['hr.employee'].search([('resource_id','=', resource.id)])[0]
+		_logger = logging.getLogger(__name__)
+		_logger.debug('RESOURCE ID: ' + str(employee.name_related))
+
+		idcard = str(employee.id)
+		dept = str(employee.department_id.id)
+		tanggal = datetime.now().strftime("%d%m%y")
+
+		if len(idcard) == 1 :
+			idcard ='00'+idcard
+		elif len(idcard) == 2:
+			idcard ='0'+idcard
+
+		if len(dept) == 1:
+			dept = '0'+ dept
+
+		code = '01'
+
+		idcard = idcard + code + tanggal
+
+		# dict(self.field['using_For']._description_selection(self.evn)).get(self.using_For)
+		# self._fields['using_For'].get_values(self.env)
+		# dict(self._fields['using_For'].selection).get(self.using_For)
+
+
+		return idcard
 
 
 	#Employee Information
 
-	employee_ids = fields.Many2one('hr.employee', string='Employee', track_visibility='onchange', default=_current_user, readonly=True)
+	employee_ids = fields.Many2one('hr.employee', string='Employee', track_visibility='onchange', default=_current_user)
 	department_id = fields.Many2one('hr.department', string='Department', default=_current_department, readonly=True)
-	job_title = fields.Many2one('hr.job', string='Job Title', default=_current_job, readonly=True)
+	job_title = fields.Many2one('hr.job', string='Job Title', default=_current_job)\
 
 	logo = fields.Binary(string="Company Logo", default=_current_user, readonly=True)
 
@@ -78,8 +133,13 @@ class PrintCard(models.Model):
 		('id_card','Id Card'),
 		('access_card','Access Card')
 	), string='Card Type', required=True)
+	using_For = fields.Selection((
+		('employee', 'Employee'),
+		('guest', 'Guest')
+	), string='Using For')
 	card_Id = fields.Char(string='Card No', default=_current_id, readonly=True)
-	card_Id2 = fields.Char(string='Card No', default=_current_id_access, readonly=True)
+	card_IdEmployee = fields.Char(string='Card No Employee', default=_current_id_access_employee, readonly=True)
+	card_IdGuest = fields.Char(string='Card No Guest', default=_current_id_access_guest, readonly=True)
 	request_Date= fields.Date(string='Requested Date', default=datetime.now(), readonly=True)
 	description = fields.Text('Notes', required=True)
 	status = fields.Selection((
