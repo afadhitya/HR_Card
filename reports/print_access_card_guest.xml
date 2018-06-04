@@ -5,7 +5,7 @@
         id="action_access_card_report_guest"
         string="Print Guest Access Card"
         model="hr.card"
-        report_type="qweb-pdf"
+        report_type="qweb-html"
         file="report_access_card_guest_template"
         name="HR_Card.report_access_card_guest_template_table"
         menu="False"/>

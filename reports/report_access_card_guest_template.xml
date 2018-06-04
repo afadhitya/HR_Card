@@ -18,21 +18,25 @@
                   <tr style="height:70%;background-color: #f2f2f2;">
                     <td>
                       <center>
-                      <div>
+                      <!-- <div>
                         <img t-attf-src="data:image/*;base64,{{o.employee_ids.image}}" style="width:200px;"/>
-                      </div>
-                      <div style="font-size:40px;">
+                      </div> -->
+                      <!-- <div style="font-size:40px;">
                         <strong><span t-field="o.employee_ids" /></strong>
-                      </div>
-                      <div style="font-size:20px;">
-                        <div>
-                          <strong>Department: </strong><span t-field="o.department_id"/>
-                        </div>
+                      </div> -->
+                      <div style="font-size:20px; margin-top:20px">
+                        <!--
                         <div>
                           <strong>Gender: </strong><span t-field="o.employee_ids.gender"/>
+                        </div> -->
+                        <div style="font-size:26px; margin-bottom: 10px;">
+                          <strong>ACCESS CARD</strong>
                         </div>
                         <div>
-                          <strong>Job Title : </strong><span t-field="o.job_title"/>
+                          <strong>Using For: </strong><span t-field="o.using_For"/>
+                        </div>
+                        <div>
+                          <strong>Guest For Department: </strong><span t-field="o.department_id"/>
                         </div>
                       </div>
                     <div>
@@ -40,7 +44,7 @@
                     </div>
                       <div t-if="o.card_IdGuest" class="col-xs-12">
                         <img t-if="o.card_IdGuest" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.card_IdGuest, 300, 300)" style="margin-top:20px; margin-bottom:20px; width:50%;height:20%;"/>
-                        <div class="col-xs-12"><span t-field="o.card_IdGuest"/></div>
+                        <div style="font-size:20px;" class="col-xs-12"><span t-field="o.card_IdGuest"/></div>
                       </div>
                       </center>
                     </td>
@@ -60,7 +64,7 @@
                     <td>
                       <center>
                         <div style="font-size:20px;">
-                          <div>
+                          <!-- <div>
                             <strong>Address: </strong><p t-field="o.employee_ids.address_home_id.street"/>
                             <p t-field="o.employee_ids.address_home_id.street2"/>
                             <span t-field="o.employee_ids.address_home_id.city"/> <span t-field="o.employee_ids.address_home_id.state_id"/> <span t-field="o.employee_ids.address_home_id.zip"/>
@@ -70,7 +74,7 @@
                           </div>
                           <div>
                             <strong>Work Email: </strong><span t-field="o.employee_ids.work_email"/>
-                          </div>
+                          </div> -->
                         </div>
                       </center>
                     </td>
