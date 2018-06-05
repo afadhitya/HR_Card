@@ -11,18 +11,11 @@
 
 
     <data noupdate="0">
-        <record id="employee_card" model="ir.rule">
-            <field name="name">Employee Cards</field>
+        <record id="personal_card" model="ir.rule">
+            <field name="name">Personal Cards</field>
             <field name="model_id" ref="model_hr_card"/>
             <field name="domain_force">[('create_uid','=',user.id)]</field>
             <field name="groups" eval="[(4, ref('HR_Card.group_card_user'))]"/>
-        </record>
-
-        <record id="officer_card" model="ir.rule">
-            <field name="name">Officer Cards</field>
-            <field name="model_id" ref="model_hr_card"/>
-            <field name="domain_force">[('create_uid','=',user.id)]</field>
-            <field name="groups" eval="[(4, ref('hr.group_hr_user'))]"/>
         </record>
 
         <record id="all_card" model="ir.rule">
@@ -32,8 +25,7 @@
                 ['|', ('department_id.member_ids.user_id', 'in', [user.id]),
                 ('department_id.manager_id.user_id', 'in', [user.id])]
             </field>
-            <field name="groups" eval="[(4, ref('hr.group_hr_manager'))]"/>
-            <field name="groups" eval="[(3, ref('hr.group_hr_user'))]"/>
+            <field name="groups" eval="[(4, ref('hr.group_hr_user'))]"/>
         </record>
     </data>
 </odoo>

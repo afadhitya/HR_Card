@@ -179,40 +179,39 @@ class PrintCard(models.Model):
 
 	@api.multi
 	def action_approval_send(self):
-		if self.env['hr.card'].search([('create_uid','=', self.env.uid)]):
-			''' Pop Up Compose Email '''
-			self.ensure_one()
-			ir_model_data = self.env['ir.model.data']
-			try:
-				template_id = ir_model_data.get_object_reference('HR_Card','email_template_edi_card')[1]
-				#template_id = self.env.ref('model.email_template_edi_card')
-				#template_id.send_mail(self.ids[0], force_send=True)
-			except ValueError:
-				template_id = False
+		''' Pop Up Compose Email '''
+		self.ensure_one()
+		ir_model_data = self.env['ir.model.data']
+		try:
+			template_id = ir_model_data.get_object_reference('HR_Card','email_template_edi_card')[1]
+			#template_id = self.env.ref('model.email_template_edi_card')
+			#template_id.send_mail(self.ids[0], force_send=True)
+		except ValueError:
+			template_id = False
 
-			try:
-				compose_form_id = ir_model_data.get_object_reference('mail','email_compose_message_wizard_form')[1]
-			except ValueError:
-				compose_form_id = False
+		try:
+			compose_form_id = ir_model_data.get_object_reference('mail','email_compose_message_wizard_form')[1]
+		except ValueError:
+			compose_form_id = False
 
-			ctx = dict()
-			ctx.update({
-				'default_model':'hr.card',
-				'default_res_id': self.ids[0],
-				'default_use_template': bool(template_id),
-				'default_template_id': template_id,
-				'default_composition_mode': 'comment',
-				'mark_so_as_sent': True,
+		ctx = dict()
+		ctx.update({
+			'default_model':'hr.card',
+			'default_res_id': self.ids[0],
+			'default_use_template': bool(template_id),
+			'default_template_id': template_id,
+			'default_composition_mode': 'comment',
+			'mark_so_as_sent': True,
 
-				})
-			self.write({'state': 'waiting'})
-			return{
-				'type':'ir.actions.act_window',
-				'view_type': 'form',
-				'view_mode': 'form',
-				'res_model': 'mail.compose.message',
-				'views':[(compose_form_id,'form')],
-				'view_id': compose_form_id,
-				'target':'new',
-				'context': ctx,
-			}
+			})
+		self.write({'state': 'waiting'})
+		return{
+			'type':'ir.actions.act_window',
+			'view_type': 'form',
+			'view_mode': 'form',
+			'res_model': 'mail.compose.message',
+			'views':[(compose_form_id,'form')],
+			'view_id': compose_form_id,
+			'target':'new',
+			'context': ctx,
+		}

@@ -1,4 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_hr_card2,access_hr_card2,model_hr_card,hr.group_hr_manager,1,1,0,1
 access_hr_card,access_hr_card,model_hr_card,base.group_user,1,1,1,1
-access_hr_job,access_hr_job,hr.model_hr_job,base.group_user,1,0,0,0
