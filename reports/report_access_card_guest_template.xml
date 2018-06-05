@@ -11,7 +11,7 @@
                   <tr style="height:30%;background-color: #b3b3b3;">
                     <td>
                       <center>
-                      <img t-attf-src="data:image/*;base64,{{o.job_title.company_id.logo_web}}" style="width:70%; height: 70%;"/></center>
+                      <img t-attf-src="data:image/*;base64,{{o.job_title.company_id.logo_web}}" style="width:70%;"/></center>
                       <center><p t-field="o.job_title.company_id"/></center>
                     </td>
                   </tr>
@@ -43,7 +43,7 @@
 
                     </div>
                       <div t-if="o.card_IdGuest" class="col-xs-12">
-                        <img t-if="o.card_IdGuest" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.card_IdGuest, 300, 300)" style="margin-top:20px; margin-bottom:20px; width:50%;height:20%;"/>
+                        <img t-if="o.card_IdGuest" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', o.card_IdGuest, 300, 300)" style="margin-top:20px; margin-bottom:20px; width:200px;height:200px;"/>
                         <div style="font-size:20px;" class="col-xs-12"><span t-field="o.card_IdGuest"/></div>
                       </div>
                       </center>
