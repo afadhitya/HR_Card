@@ -9,22 +9,22 @@
 				<!-- Button go here -->
 					<!--<button name="do_send_approval" type="object" string="Send Approval" class="btn-primary" states="draft"/>-->
 
-					<button name="do_approve" type="object" string="Approve" class="btn-primary" states="waiting" groups="hr.group_hr_user"/>
+					<button name="do_approve" type="object" string="Approve" class="btn-primary" states="waiting" groups="hr.group_hr_manager"/>
 
 					<!-- Button Email -->
-					<button name="action_approval_send" string="Send by Email" type="object" states="draft"  groups="HR_Card.group_card_user" class="btn-primary"/>
+					<button name="action_approval_send" string="Send by Email" type="object" states="draft" groups="HR_Card.group_card_user" class="btn-primary"/>
 
-					<button name="do_refuse" type="object" string="Refuse" class="btn-primary" states="waiting" groups="hr.group_hr_user"/>
+					<button name="do_refuse" type="object" string="Refuse" class="btn-primary" states="waiting" groups="hr.group_hr_manager"/>
 
-					<button name="%(action_card_report)d" string="Print Card" type="action" class="btn-primary" attrs="{'invisible':['|',('card_Type','!=','id_card'), ('state','!=','progress')]}" groups="hr.group_hr_user"/>
+					<button name="%(action_card_report)d" string="Print Card" type="action" class="btn-primary" attrs="{'invisible':['|',('card_Type','!=','id_card'), ('state','!=','progress')]}" groups="hr.group_hr_manager"/>
 
-					<button name="%(action_business_card_report)d" string="Print Card" type="action" class="btn-primary" attrs="{'invisible':['|',('card_Type','!=','business_card'), ('state','!=','progress')]}" groups="hr.group_hr_user"/>
+					<button name="%(action_business_card_report)d" string="Print Card" type="action" class="btn-primary" attrs="{'invisible':['|',('card_Type','!=','business_card'), ('state','!=','progress')]}" groups="hr.group_hr_manager"/>
 
-					<button name="%(action_access_card_report)d" string="Print Employee Access Card" type="action" class="btn-primary" attrs="{'invisible':['|','|',('card_Type','!=','access_card'), ('using_For','!=','employee'), ('state','!=','progress')]}" groups="hr.group_hr_user"/>
+					<button name="%(action_access_card_report)d" string="Print Employee Access Card" type="action" class="btn-primary" attrs="{'invisible':['|','|',('card_Type','!=','access_card'), ('using_For','!=','employee'), ('state','!=','progress')]}" groups="hr.group_hr_manager"/>
 
-					<button name="%(action_access_card_report_guest)d" string="Print Guest Access Card" type="action" class="btn-primary" attrs="{'invisible':['|','|',('card_Type','!=','access_card'), ('using_For','!=','guest'), ('state','!=','progress')]}" groups="hr.group_hr_user"/>
+					<button name="%(action_access_card_report_guest)d" string="Print Guest Access Card" type="action" class="btn-primary" attrs="{'invisible':['|','|',('card_Type','!=','access_card'), ('using_For','!=','guest'), ('state','!=','progress')]}" groups="hr.group_hr_manager"/>
 
-					<button name="do_done" type="object" string="Done" class="btn-primary" states="progress" groups="hr.group_hr_user"/>
+					<button name="do_done" type="object" string="Done" class="btn-primary" states="progress" groups="hr.group_hr_manager"/>
 
 					<field name="state" widget="statusbar" statusbar_visible="draft,waiting,progress,done" on_change="1" modifiers="{'readonly': true}"/>
 				</header>
@@ -74,7 +74,6 @@
 		<field name="model">hr.card</field>
 		<field name="arch" type="xml">
 			<tree>
-				<field name="card_Id"/>
 				<field name="card_Type"/>
 				<field name="employee_ids"/>
 				<field name="department_id"/>
