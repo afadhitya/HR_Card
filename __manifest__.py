@@ -18,5 +18,5 @@
 		'views/card_view.xml',
 		'data/mail_template_data2.xml',
 	],
-	'application': False,
+	'application': True,
 }
